@@ -19,7 +19,23 @@
 
 }
 
-.mole{
+.mole{/*for whack a mole*/
     background-image: url(../images/whack-a-mole.png);
     background-position: center;
+}
+
+
+/* break out*/
+.b-grid{
+    position: absolute;
+    width: 570px;
+    height: 300px;
+    border: 1px solid black;
+}
+
+.block{
+    position: absolute;
+    width: 100px ;
+    height: 20px;
+    background-color: blue; 
 }
