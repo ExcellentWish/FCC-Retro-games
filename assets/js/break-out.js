@@ -1,7 +1,9 @@
 const grid = document.querySelector('.b-grid');
 const blockWidth = 100;
 const blockHeight = 20;
-const boardWidth = 470;
+
+const boardHeight = 300
+const boardWidth = 540;
 
 const ballDiameter = 20;
 let xDirection = 2;
@@ -139,15 +141,27 @@ function moveBall(){
  // check for collision
  function checkForCollision(){
    // check for the wall collision
-   if(ballCurrentPostion[0] >= (boardWidth - ballDiameter)){
+   if(ballCurrentPostion[0] >= (boardWidth - ballDiameter ||
+     ballCurrentPostion[1] >= boardHeight - ballDiameter)){
      changeDirection();
    }
  }
 
  function changeDirection(){
-      if(xDirection === 2 && yDirection == 2){
+      if(xDirection === 2 && yDirection === 2){
         yDirection = -2;
         return;
       }
-      //if()
+      if(xDirection === 2 && yDirection === -2){
+        xDirection = -2;
+        return;
+      }
+      if(xDirection === -2 && yDirection === -2){
+      yDirection = 2;
+        return;
+      }
+      if(xDirection === -2 && yDirection === 2){
+        xDirection = 2;
+        return;
+      }
  }
