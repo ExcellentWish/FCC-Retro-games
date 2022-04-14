@@ -3,7 +3,7 @@ const blockWidth = 100;
 const blockHeight = 20;
 
 const boardHeight = 300
-const boardWidth = 540;
+const boardWidth = 560;
 
 const ballDiameter = 20;
 let xDirection = 2;
@@ -141,14 +141,17 @@ function moveBall(){
  // check for collision
  function checkForCollision(){
    // check for the wall collision
-   if(ballCurrentPostion[0] >= (boardWidth - ballDiameter ||
-     ballCurrentPostion[1] >= boardHeight - ballDiameter)){
+   if(ballCurrentPostion[0] >= (boardWidth - ballDiameter) || ballCurrentPostion[1] >= (boardHeight - ballDiameter) 
+      ||  (ballCurrentPostion[0] <= 0) || (ballCurrentPostion[1] < 0)){
      changeDirection();
    }
+
+   //check for game over 
+   
  }
 
  function changeDirection(){
-      if(xDirection === 2 && yDirection === 2){
+      if(xDirection === 2 && yDirection == 2){
         yDirection = -2;
         return;
       }
