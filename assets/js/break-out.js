@@ -5,11 +5,14 @@ const blockHeight = 20;
 const boardHeight = 300
 const boardWidth = 560;
 
+const scoreDisplay = document.querySelector('#score');
+
 const ballDiameter = 20;
-let xDirection = 2;
+let xDirection = -2;
 let yDirection = 2;
 
 let timerId;
+let score = 0;
 
 
 const userStart = [230,10];
@@ -141,13 +144,19 @@ function moveBall(){
  // check for collision
  function checkForCollision(){
    // check for the wall collision
-   if(ballCurrentPostion[0] >= (boardWidth - ballDiameter) || ballCurrentPostion[1] >= (boardHeight - ballDiameter) 
-      ||  (ballCurrentPostion[0] <= 0) || (ballCurrentPostion[1] < 0)){
+   if(ballCurrentPostion[0] >= (boardWidth - ballDiameter) ||
+    ballCurrentPostion[1] >= (boardHeight - ballDiameter) || 
+     (ballCurrentPostion[0] <= 0) || (ballCurrentPostion[1] < 0)){
      changeDirection();
    }
 
    //check for game over 
-   
+   if (ballCurrentPostion[1] <= 0){
+     clearInterval(timerId);
+     scoreDisplay.innerHTML = 'You lose';
+     document.removeEventListener('keydown', moveUser)
+
+   }
  }
 
  function changeDirection(){
