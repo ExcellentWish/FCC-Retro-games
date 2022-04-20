@@ -143,6 +143,20 @@ function moveBall(){
  
  // check for collision
  function checkForCollision(){
+// check for block collision
+for(let i = 0; i < blocks.length; i++){
+  if(
+    (ballCurrentPosition[0] > blocks[i].bottomLeft[0] && ballCurrentPostion[0] < blocks[i].bottomRight[0]) && 
+    ((ballCurrentPostion[1] + ballDiameter) > blocks[i].bottomLeft[1] && ballCurrentPostion[1] < blocks[i].topLeft[1]	)
+  ){
+    const allBlocks = Array.from(document.querySelectorAll('.block'))
+  }
+}
+
+
+
+
+
    // check for the wall collision
    if(ballCurrentPostion[0] >= (boardWidth - ballDiameter) ||
     ballCurrentPostion[1] >= (boardHeight - ballDiameter) || 
