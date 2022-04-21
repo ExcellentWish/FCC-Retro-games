@@ -172,6 +172,11 @@ if(
      (ballCurrentPostion[0] <= 0) || (ballCurrentPostion[1] < 0)){
      changeDirection();
    }
+   //check for win
+   if(blocks.length === 0){
+    clearInterval(timerId);
+    scoreDisplay.innerHTML = 'You Win!!';
+   }
 
    //check for game over 
    if (ballCurrentPostion[1] <= 0){
