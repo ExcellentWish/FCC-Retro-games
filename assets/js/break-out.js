@@ -136,8 +136,8 @@ grid.appendChild(ball);
 function moveBall(){
   ballCurrentPostion[0] += xDirection;
   ballCurrentPostion[1] += yDirection;
-  drawBall()
-  checkForCollision()
+  drawBall();
+  checkForCollision();
 }
  timerId = setInterval(moveBall, 30);
  
@@ -146,16 +146,23 @@ function moveBall(){
 // check for block collision
 for(let i = 0; i < blocks.length; i++){
   if(
-    (ballCurrentPosition[0] > blocks[i].bottomLeft[0] && ballCurrentPostion[0] < blocks[i].bottomRight[0]) && 
+    (ballCurrentPostion[0] > blocks[i].bottomLeft[0] && ballCurrentPostion[0] < blocks[i].bottomRight[0]) && 
     ((ballCurrentPostion[1] + ballDiameter) > blocks[i].bottomLeft[1] && ballCurrentPostion[1] < blocks[i].topLeft[1]	)
   ){
     const allBlocks = Array.from(document.querySelectorAll('.block'))
+    allBlocks[i].classList.remove('block');
+    blocks.splice(i, 1)
+    changeDirection();
   }
 }
 
-
-
-
+//get user collision
+if(
+  (ballCurrentPostion[0] > currentPostion[0] && ballCurrentPostion[0] < currentPostion[0] + blockWidth) &&
+  (ballCurrentPostion[1] > currentPostion[1] && ballCurrentPostion[1] < currentPostion[1] + blockHeight)
+){
+  changeDirection();
+}
 
    // check for the wall collision
    if(ballCurrentPostion[0] >= (boardWidth - ballDiameter) ||
