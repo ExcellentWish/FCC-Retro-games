@@ -153,6 +153,8 @@ for(let i = 0; i < blocks.length; i++){
     allBlocks[i].classList.remove('block');
     blocks.splice(i, 1)
     changeDirection();
+    score++
+    scoreDisplay.innerHTML = score;
   }
 }
 
