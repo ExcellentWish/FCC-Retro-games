@@ -55,3 +55,38 @@
     border-radius: 10px;
     background-color: silver;
 }
+
+/*for frogger*/
+.frogger-grid {
+    width: 180px;
+    height:180px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+}
+
+.frogger-grid div{
+    height: 18px;
+    width: 18px;
+    border: 1px solid black;
+}
+
+.ending-block{
+    background-color: red;
+}
+
+.starting-block{
+ background-color: azure;
+}
+
+.log-left, .log-right{
+    background-color: blue;
+}
+
+.car-left,.car-right{
+    background-color: lightgray;
+}
+
+.frog{
+    background-color: green;
+}
