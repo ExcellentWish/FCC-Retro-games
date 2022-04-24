@@ -1,32 +1,36 @@
-#grid{  /*For memorry html*/
+#grid {
+    /*For memorry html*/
     width: 400px;
-    height:300px;
-    display:flex;
+    height: 300px;
+    display: flex;
     flex-wrap: wrap;
 }
 
-.w-grid{/*for whack a mole*/
+.w-grid {
+    /*for whack a mole*/
     width: 606px;
     height: 606px;
     display: flex;
     flex-wrap: wrap;
 }
 
-.square{/*for whack a mole*/
+.square {
+    /*for whack a mole*/
     height: 200px;
     width: 200px;
     border: 1px solid #000;
 
 }
 
-.mole{/*for whack a mole*/
+.mole {
+    /*for whack a mole*/
     background-image: url(../images/whack-a-mole.png);
     background-position: center;
 }
 
 
 /* break out*/
-.b-grid{
+.b-grid {
     position: absolute;
     width: 570px;
     height: 300px;
@@ -34,21 +38,21 @@
     margin-top: 100px;
 }
 
-.block{
+.block {
     position: absolute;
-    width: 100px ;
+    width: 100px;
     height: 20px;
-    background-color: blue; 
+    background-color: blue;
 }
 
-.user{
+.user {
     position: absolute;
-    width: 100px ;
+    width: 100px;
     height: 20px;
-    background-color: purple; 
+    background-color: purple;
 }
 
-.ball{
+.ball {
     position: absolute;
     width: 20px;
     height: 20px;
@@ -59,34 +63,56 @@
 /*for frogger*/
 .frogger-grid {
     width: 180px;
-    height:180px;
+    height: 180px;
     display: flex;
     flex-wrap: wrap;
     border: 1px solid black;
 }
 
-.frogger-grid div{
+.frogger-grid div {
     height: 18px;
     width: 18px;
     border: 1px solid black;
 }
 
-.ending-block{
+.ending-block {
     background-color: red;
 }
 
-.starting-block{
- background-color: azure;
+.starting-block {
+    background-color: azure;
 }
 
-.log-left, .log-right{
+/*.log-left, .log-right{
+    background-color: blue;
+}
+*/
+/*.car-left,.car-right{
+    background-color: lightgray;
+}*/
+
+
+
+.l1,
+.l2,
+.l3 {
+    background-color: brown;
+}
+
+.l4,
+.l5 {
     background-color: blue;
 }
 
-.car-left,.car-right{
-    background-color: lightgray;
+.c1 {
+    background-color: black;
 }
 
-.frog{
+.c2,
+.c3 {
+    background-color: lightgrey;
+}
+
+.frog {
     background-color: green;
 }
