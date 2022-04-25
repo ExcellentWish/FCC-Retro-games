@@ -49,6 +49,9 @@ function autoMoveElements() {
 
     carsLeft.forEach(carLeft => moveCarLeft(carLeft));
     carsRight.forEach(carRight => moveCarRight(carRight))
+
+    lose(); // check everytime for a lose
+    win();
 }
 //moves log to left
 function moveLogLeft(logLeft) {
@@ -143,6 +146,24 @@ function moveCarRight(carRight) {
     }
 }
 
+function lose(){
+    if(squares[currentIndex].classList.contains('c1') || squares[currentIndex].classList.contains('l4') || squares[currentIndex].classList.contains('l5'))  {
+        resultDisplay.textContent = ' You lose!';
+        clearInterval(countDownTimerId);
+        clearInterval(timerId);
+        squares[currentIndex].classList.remove('frog');
+        document.removeEventListener('keyup',moveFrog);
+    }
+}
+
+function win(){
+    if(squares[currentIndex].classList.contains('ending-block')){
+        resultDisplay.textContent = ' You Win!!';
+        clearInterval(countDownTimerId);
+        clearInterval(timerId);
+        document.removeEventListener('keyup',moveFrog);
+    }
+}
 
 setInterval(autoMoveElements, 1000)
 
@@ -156,9 +177,21 @@ function countDown() {
     if (currentTime == 0) {
         clearInterval(countDownTimerId);
         clearInterval(timerId);
-
-    }
+        resultDisplay.textContent = 'Times Up!! You Lose !!';
+    }  
 }
 
-let countDownTimerId = setInterval(countDown, 1000)
+let countDownTimerId = setInterval(countDown(), 1000)
 
+// Start Pause button 
+
+startPauseButton.addEventListener('click', () => { // es6 function
+    if(timerId){
+        clearInterval(timerId);
+    } 
+    else{
+        timerId = setInterval(autoMoveElements,1000);
+        document.addEventListener('keyup', moveFrog);
+
+    }
+})
