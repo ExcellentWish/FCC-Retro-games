@@ -188,6 +188,7 @@ let countDownTimerId = setInterval(countDown(), 1000)
 startPauseButton.addEventListener('click', () => { // es6 function
     if(timerId){
         clearInterval(timerId);
+        document.removeEventListener('keyup', moveFrog);
     } 
     else{
         timerId = setInterval(autoMoveElements,1000);
