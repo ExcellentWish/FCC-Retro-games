@@ -10,10 +10,11 @@ const carsLeft = document.querySelectorAll('.car-left');
 const carsRight = document.querySelectorAll('.car-right');
 
 let currentTime = 20;
-let timerId = null;
-
+let timerId;
+let outcomeTimerId;
 let currentIndex = 76; //starting point
 const width = 9;
+
 
 
 // move our frog. need to add event listeners
@@ -42,17 +43,25 @@ function moveFrog(event) {
 }
 document.addEventListener('keyup', moveFrog);
 
-//moving logs and cars to move aout
+//moving logs and cars to move 
 function autoMoveElements() {
+    currentTime--;
+    timeLeftDisplay.textContent = currentTime;
+
     logsLeft.forEach(logLeft => moveLogLeft(logLeft));
     logsRight.forEach(logRight => moveLogRight(logRight));
 
     carsLeft.forEach(carLeft => moveCarLeft(carLeft));
     carsRight.forEach(carRight => moveCarRight(carRight))
 
+    countDown()
+}
+
+function checkOutComes(){
     lose(); // check everytime for a lose
     win();
 }
+
 //moves log to left
 function moveLogLeft(logLeft) {
     switch (true) {
@@ -151,9 +160,17 @@ function lose(){
         resultDisplay.textContent = ' You lose!';
         clearInterval(countDownTimerId);
         clearInterval(timerId);
+        clearInterval(outcomeTimerId);
         squares[currentIndex].classList.remove('frog');
         document.removeEventListener('keyup',moveFrog);
     }
+    if (currentTime == 0) {
+        clearInterval(countDownTimerId);
+        clearInterval(timerId);
+        clearInterval(outcomeTimerId);
+        resultDisplay.textContent = 'Times Up!! You Lose !!';
+        document.removeEventListener('keyup', moveFrog)
+    } 
 }
 
 function win(){
@@ -161,38 +178,26 @@ function win(){
         resultDisplay.textContent = ' You Win!!';
         clearInterval(countDownTimerId);
         clearInterval(timerId);
+        clearInterval(outcomeTimerId);
         document.removeEventListener('keyup',moveFrog);
     }
 }
 
 setInterval(autoMoveElements, 1000)
 
-
-
-// timer second countdown
-function countDown() {
-    currentTime--;
-    timeLeftDisplay.textContent = currentTime;
-
-    if (currentTime == 0) {
-        clearInterval(countDownTimerId);
-        clearInterval(timerId);
-        resultDisplay.textContent = 'Times Up!! You Lose !!';
-    }  
-}
-
-let countDownTimerId = setInterval(countDown(), 1000)
-
 // Start Pause button 
 
-startPauseButton.addEventListener('click', () => { // es6 function
-    if(timerId){
-        clearInterval(timerId);
-        document.removeEventListener('keyup', moveFrog);
-    } 
-    else{
-        timerId = setInterval(autoMoveElements,1000);
-        document.addEventListener('keyup', moveFrog);
 
+startPauseButton.addEventListener('click', () => {
+    if (timerId) {
+        clearInterval(timerId)
+        clearInterval(outcomeTimerId)
+        outcomeTimerId = null
+        timerId = null
+        document.removeEventListener('keyup', moveFrog)
+    } else {
+        timerId = setInterval(autoMoveElements, 1000)
+        outcomeTimerId = setInterval(checkOutComes, 50)
+        document.addEventListener('keyup', moveFrog)
     }
 })
