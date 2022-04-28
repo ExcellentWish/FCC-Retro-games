@@ -116,3 +116,27 @@
 .frog {
     background-color: green;
 }
+
+/* Connect four */
+.connect4-grid{
+    border: 1px solid;
+    height: 120px;
+    width: 140px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.connect4-grid div {
+    height: 20px;
+    width: 20px;
+}
+
+.player-one{
+    background-color: red;
+    border-radius: 10px;
+}
+
+.player-two{
+    background-color: blue;
+    border-radius: 10px;
+}
