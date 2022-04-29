@@ -16,13 +16,20 @@ possibleChoices.forEach(possibleChoices => possibleChoices.addEventListener("cli
 }))
 
 function generateComputerChoice(){
-    let randomNumber = Math.floor(Math.random()* 3);
+    let randomNumber = Math.floor(Math.random()* 5);
  if ( randomNumber === 0){
      computerChoice = 'rock';
  } else if  ( randomNumber === 1){
     computerChoice = 'paper';
 }  else if ( randomNumber === 2){
     computerChoice = 'sissors';
+}
+else if ( randomNumber === 3){
+    computerChoice = 'spock';
+}
+
+else if ( randomNumber === 4){
+    computerChoice = 'lizard';
 }
 computerChoiceDisplay.innerHTML = computerChoice;
 }
@@ -31,25 +38,43 @@ function generateResults(){
     if(computerChoice === userChoice){
         getResults = 'draw';  
     }
-     else if(computerChoice === 'rock' &&  userChoice ==="sissors"){
-        getResults = 'You lost';  
-    }
-    else if(computerChoice === 'paper' &&  userChoice ==="rock"){
-        getResults = 'You lost';  
-    }
-    else if(computerChoice === 'sissors' &&  userChoice ==="paper"){
-        getResults = 'You lost';  
-    }
-
     else if(computerChoice === 'sissors' &&  userChoice ==="rock"){
         getResults = 'You won';  
     }
-    if(computerChoice === 'paper' &&  userChoice ==="sissors"){
+    else if(computerChoice === 'sissors' &&  userChoice ==="spock"){
         getResults = 'You won';  
     }
-    if(computerChoice === 'rock' &&  userChoice ==="paper"){
+
+    else if(computerChoice === 'paper' &&  userChoice ==="sissors"){
         getResults = 'You won';  
     }
+    else if(computerChoice === 'paper' && userChoice === 'lizard'){
+        getResults = 'You won';  
+    }
+       else if(computerChoice === 'rock' &&  userChoice ==="paper"){
+        getResults = 'You won';  
+    }
+    else if(computerChoice === 'rock' &&  userChoice ==="spock"){
+        getResults = 'You won';  
+    }
+    else if(computerChoice === 'lizard' &&  userChoice ==="rock"){
+        getResults = 'You won';  
+    }
+    else if(computerChoice === 'lizard' &&  userChoice ==="sissors"){
+        getResults = 'You won';  
+    }
+    else if(computerChoice === 'spock' &&  userChoice ==="paper"){
+        getResults = 'You won';  
+    }
+    else if(computerChoice === 'spock' &&  userChoice ==="lizard"){
+        getResults = 'You won';  
+    }
+    else{
+        getResults='You lost'
+    }
+
+   
+   
 
     resultDisplay.innerHTML = getResults;
 }
