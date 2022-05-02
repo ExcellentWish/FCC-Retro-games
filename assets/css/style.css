@@ -140,3 +140,18 @@
     background-color: blue;
     border-radius: 10px;
 }
+
+/* For space invaders*/
+
+.space-grid{
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.space-grid div{
+    width: 20px;
+    height: 20px;
+}
