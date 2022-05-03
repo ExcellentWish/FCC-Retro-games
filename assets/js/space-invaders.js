@@ -1,11 +1,11 @@
 const grid = document.querySelector('.space-grid');
+const resultsDisplay = document.querySelector('#invader-result')
 let currentShooterInvaderIndex = 202;
 let width = 15;
 let direction = 1;
 let alienRemoved = [];
-let invadersId = null;
+let invadersId;
 let goingRight = true;
-const resultDisplay = document.querySelector('#invader-result')
 let results = 0;
 
 
@@ -35,8 +35,8 @@ function draw(){
 draw();
 
 function remove(){
-    for(let y = 0; y < alienInvaders.length; y++){
-        squares[alienInvaders[y]].classList.remove('invader');
+    for(let i = 0; i < alienInvaders.length; i++){
+        squares[alienInvaders[i]].classList.remove('invader');
     }
 }
 
@@ -92,10 +92,11 @@ function moveInvaders(){
           clearInterval(invadersId)
         }
     }
-    if(alienRemoval.length === alienInvaders.length){
-        resultsDisplay.innerHTML = 'YOU WIN';
-        clearInterval(invadersId);
-    }
+    if (alienRemoved.length === alienInvaders.length) {
+        resultsDisplay.innerHTML = 'YOU WIN'
+        clearInterval(invadersId)
+      }
+    
 }
 
 invadersId = setInterval(moveInvaders, 500);
@@ -107,6 +108,7 @@ function shoot(event){
         squares[currentLaserIndex].classList.remove('laser');
         currentLaserIndex -= width;
         squares[currentLaserIndex].classList.add('laser');
+
     if(squares[currentLaserIndex].classList.contains('invader')){
         squares[currentLaserIndex].classList.remove('laser');
         squares[currentLaserIndex].classList.remove('invader');
@@ -118,7 +120,8 @@ function shoot(event){
         const alienRemoval = alienInvaders.indexOf(currentLaserIndex);
         alienRemoved.push(alienRemoval);
         results++
-        resultDisplay.innerHTML = results;
+        resultsDisplay.innerHTML = results;
+        
     }
 
   }
