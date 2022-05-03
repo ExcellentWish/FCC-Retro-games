@@ -162,10 +162,14 @@
 }
 
 .shooter{
-    background-color: red;
+    background-color: green;
 }
 
 .laser{
     background-color: yellow;
     border-radius: 10px;
+}
+
+.boom{
+    background-color: red;
 }
